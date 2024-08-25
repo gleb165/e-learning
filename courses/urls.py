@@ -12,15 +12,18 @@ urlpatterns = [path('mine/', views.ManageCourseListView.as_view(), name='manage_
                     views.ContentCreateUpdateView.as_view(), name='module_content_update'),
                path('module/<int:module_id>/', views.ModuleContentListView.as_view(), name='module_content_list'),
                path('content/<int:id>/delete/', views.ContentDeleteView.as_view(), name='module_content_delete'),
-                path(
+               path(
                     'module/order/',
                     views.ModuleOrderView.as_view(),
                     name='module_order'
-                ), path(
+                ),
+               path(
                     'content/order/',
                     views.ContentOrderView.as_view(),
                     name='content_order'
                 ),
+               path('subject/<slug:subject>/', views.CourseListView.as_view(),name='course_list_subject'),
+               path('<slug:slug>/', views.CourseDetailView.as_view(), name='course_detail')
                ]
 
 
