@@ -24,10 +24,17 @@ SECRET_KEY = 'django-insecure-npow2crrz&v7vr&)2m&%z3jdm2^v+v1$0mgzevzg*5e2honoo@
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 60 * 15
+CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 ALLOWED_HOSTS = []
 
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+    }
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,13 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'embed_video'
+    'embed_video',
+    'debug_toolbar',
+    'redisboard',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -126,3 +138,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
