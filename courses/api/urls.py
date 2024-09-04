@@ -12,7 +12,6 @@ app_name = 'courses'
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('courses/<pk>/enroll/', views.CoursesEnrollView.as_view(), name='course_enroll'),
-    path('api-token-auth/', v.obtain_auth_token)
+    # path('courses/<pk>/enroll/', views.CoursesEnrollView.as_view(), name='course_enroll'),
 ]
 

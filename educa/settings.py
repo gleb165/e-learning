@@ -49,15 +49,16 @@ INSTALLED_APPS = [
     'embed_video',
     'debug_toolbar',
     'redisboard',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 MIDDLEWARE = [
