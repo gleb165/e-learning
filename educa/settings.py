@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'redisboard',
     'rest_framework',
     'rest_framework.authtoken',
+    'chat.apps.ChatConfig'
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
