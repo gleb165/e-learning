@@ -28,7 +28,8 @@ CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 15
 CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 ALLOWED_HOSTS = []
-
+ASGI_APPLICATION = 'educa.asgi.application'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
@@ -36,8 +37,8 @@ CACHES = {
     }
 }
 # Application definition
-
 INSTALLED_APPS = [
+    'daphne',
     'courses.apps.CoursesConfig',
     'students.apps.StudentsConfig',
     'django.contrib.admin',
@@ -148,7 +149,6 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = [
     '127.0.0.1',
